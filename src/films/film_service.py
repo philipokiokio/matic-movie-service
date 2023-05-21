@@ -35,7 +35,7 @@ class FilmService:
         films = self.repo.all(asc_sort)
         if not films:
             raise HTTPException(
-                detail="There are no films in the service",
+                detail="there are no films in the service",
                 status_code=status.HTTP_404_NOT_FOUND,
             )
 
@@ -55,7 +55,7 @@ class FilmService:
                 status_code=status.HTTP_404_NOT_FOUND,
             )
         return {
-            "message": "film is retrieved sucessfully",
+            "message": "film retrieved successfully",
             "data": self.orm_call(film),
             "status": status.HTTP_200_OK,
         }
@@ -71,13 +71,13 @@ class FilmService:
                 status_code=status.HTTP_404_NOT_FOUND,
             )
 
-        film_dict = film_update.dict(exclude=True)
+        film_dict = film_update.dict(exclude_unset=True)
         for key, value in film_dict.items():
             setattr(film, key, value)
         film = self.repo.update(film)
 
         return {
-            "message": "film is updated sucessfully",
+            "message": "film updated successfully",
             "data": self.orm_call(film),
             "status": status.HTTP_200_OK,
         }

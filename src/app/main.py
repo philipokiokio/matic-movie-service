@@ -18,7 +18,8 @@ async def root(db: Session = Depends(get_db)):
     film_data = await sw_films.flims_data()
     repo = film_repo(db)
     if not repo.all():
-        repo.bulk_create(film_data)
+        if type(film_data) == list:
+            repo.bulk_create(film_data)
 
     return {
         "message": "Codematic Movie-API take home",

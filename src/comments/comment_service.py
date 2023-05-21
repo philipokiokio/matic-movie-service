@@ -22,7 +22,7 @@ class CommentService:
         film = self.film_repo.by_id(film_id)
         if film is None:
             raise HTTPException(
-                detail="There is no film with this id",
+                detail="there is no film with this id",
                 status_code=status.HTTP_404_NOT_FOUND,
             )
         return film
@@ -35,7 +35,7 @@ class CommentService:
         comment_create["film_id"] = film.id
         comment = self.repo.create(comment_create)
         return {
-            "message": "Comment created successfully",
+            "message": "comment created successfully",
             "data": self.orm_call(comment),
             "status": status.HTTP_201_CREATED,
         }
@@ -49,12 +49,12 @@ class CommentService:
         comments = self.repo.all(film.id, asc_sort)
         if not comments:
             raise HTTPException(
-                detail="There are no comments for this film",
+                detail="there are no comments for this film",
                 status_code=status.HTTP_404_NOT_FOUND,
             )
         comments_ = [self.orm_call(comment) for comment in comments]
         return {
-            "message": "Comments retrieved Successfully",
+            "message": "comments retrieved successfully",
             "data": comments_,
             "status": status.HTTP_200_OK,
         }
@@ -67,7 +67,7 @@ class CommentService:
         comment = self.repo.by_id(film.id, comment_id)
         if not comment:
             raise HTTPException(
-                detail="There is no comment for this film with this id",
+                detail="there is no comment for this film with this id",
                 status_code=status.HTTP_404_NOT_FOUND,
             )
         return {
@@ -84,7 +84,7 @@ class CommentService:
         comment = self.repo.by_id(film.id, comment_id)
         if not comment:
             raise HTTPException(
-                detail="There is no comment for this film with this id",
+                detail="there is no comment for this film with this id",
                 status_code=status.HTTP_404_NOT_FOUND,
             )
         for key, value in comment_update.dict().items():
@@ -103,7 +103,7 @@ class CommentService:
         comment = self.repo.by_id(film.id, comment_id)
         if not comment:
             raise HTTPException(
-                detail="There is no comment for this film with this id",
+                detail="there is no comment for this film with this id",
                 status_code=status.HTTP_404_NOT_FOUND,
             )
         self.repo.delete(comment)
