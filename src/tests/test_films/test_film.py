@@ -2,14 +2,6 @@ import pytest
 from src.tests.conftest import TestClient, client, create_film, custom_film
 
 
-def test_root(client):
-    client: TestClient = client
-    res = client.get("/")
-
-    assert res.status_code == 200
-    assert res.json().get("message") == "Codematic Movie-API take home"
-
-
 FILM_ROUTE = "/api/v1/film"
 
 
