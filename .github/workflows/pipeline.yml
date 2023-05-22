@@ -63,10 +63,11 @@ jobs:
     steps:  
     - name: Now Deploying.
       run: echo "Deploying to Digital Ocean."
-    - name: ssh into the Ubuntu Instance
-      uses: appleboy/ssh-action@master
     - name: Testing secrets
       run: echo "${{secrets.SERVER_HOST}}"
+
+    - name: ssh into the Ubuntu Instance
+      uses: appleboy/ssh-action@master
 
       with:
         host:  ${{secrets.SERVER_HOST}}
