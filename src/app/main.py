@@ -15,9 +15,10 @@ app.include_router(comment_router)
 
 @app.get("/", status_code=status.HTTP_200_OK)
 async def root(db: Session = Depends(get_db)):
-    film_data = await sw_films.flims_data()
-    repo = film_repo(db)
     if not repo.all():
+        film_data = await sw_films.flims_data()
+        repo = film_repo(db)
+
         if type(film_data) == list:
             repo.bulk_create(film_data)
 
