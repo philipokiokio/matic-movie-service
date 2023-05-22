@@ -23,8 +23,4 @@ async def root(db: Session = Depends(get_db)):
         if type(film_data) == list:
             repo.bulk_create(film_data)
 
-    return {
-        "message": "Codematic Movie-API take home",
-        "docs": "/docs",
-        "redoc": "/redocs",
-    }
+    return {"message": "Codematic Movie-API take home", "docs": "/docs"}

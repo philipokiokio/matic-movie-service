@@ -19,7 +19,6 @@ Root Server URI:
 
 Documentation {OpenAPI Spec[provided out of the box with FastAPI]} URL: https://matic-films.mymixer.tech/
 *  swagger: https://matic-films.mymixer.tech/docs
-* redoc: https://matic-films.mymixer.tech/re-docs
 
 
 ## Starting the Server Locally
