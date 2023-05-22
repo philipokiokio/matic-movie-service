@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session
 from src.films.film_router import film_router
 from src.comments.comment_router import comment_router
 
-app = FastAPI()
+app = FastAPI(title="Code-Matic Film Service")
 
 
 app.include_router(film_router)

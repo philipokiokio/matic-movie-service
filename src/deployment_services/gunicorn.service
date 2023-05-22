@@ -1,0 +1,18 @@
+[Unit]
+Description=Matic API Server
+After= network.target
+
+[Service]
+User=bolt
+Group=bolt
+WorkingDirectory=/home/bolt/poc/src/
+Environment="PATH=home/bolt/poc/venv/bin"
+EnvironmentFile=/home/bolt/.env
+ExecStart=/home/bolt/poc/venv/bin/gunicorn -w 4 -k uvicorn.workers.UvicornWorker core.main:app --bind 0.0.0.0:7000
+
+[Install]
+WantedBy=multi-user.target
+
+
+
+

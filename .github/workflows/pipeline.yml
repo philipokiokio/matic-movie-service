@@ -63,21 +63,21 @@ jobs:
     steps:  
     - name: Now Deploying.
       run: echo "Deploying to Digital Ocean."
-    # - name: ssh into the Ubuntu Instance
-    #   uses: appleboy/ssh-action@master
-    #   with:
-    #     host:  ${{secrets.SERVER_HOST}}
-    #     username: ${{secrets.SERVER_USERNAME}}
-    #     password: ${{secrets.SERVER_PASSWORD}}
-    #     script: |
-    #       source .profile
-    #       cd app
-    #       source venv/bin/activate
-    #       cd src
-    #       git pull -v
-    #       pip install -r requirements.txt
-    #       cd app/src
-    #       alembic upgrade heads
-    #       echo ${{secrets.SERVER_PASSWORD}} | sudo -S systemctl restart api
-    #       echo ${{secrets.SERVER_PASSWORD}} | sudo systemctl status api
-    # - run: echo "Deployment completed."
+    - name: ssh into the Ubuntu Instance
+      uses: appleboy/ssh-action@master
+      with:
+        host:  ${{secrets.SERVER_HOST}}
+        username: ${{secrets.SERVER_USERNAME}}
+        password: ${{secrets.SERVER_PASSWORD}}
+        script: |
+          source .profile
+          cd poc
+          source venv/bin/activate
+          cd src
+          git pull -v
+          pip install -r requirements.txt
+          cd app/src
+          alembic upgrade heads
+          echo ${{secrets.SERVER_PASSWORD}} | sudo -S systemctl restart poc.service
+          echo ${{secrets.SERVER_PASSWORD}} | sudo systemctl status poc.service
+    - run: echo "Deployment completed."
