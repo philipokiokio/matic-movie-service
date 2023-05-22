@@ -59,12 +59,15 @@ jobs:
 
   Deploy:
     runs-on: ubuntu-latest
-    needs: [Build]    
+    needs: [Build]  
+    environment:
+      name: pipeline
+
     steps:  
     - name: Now Deploying.
       run: echo "Deploying to Digital Ocean."
     - name: Testing secrets
-      run: echo "${{secrets.SERVER_HOST}}"
+      run: echo ${{secrets.SERVER_HOST}}
 
     - name: ssh into the Ubuntu Instance
       uses: appleboy/ssh-action@master
