@@ -9,6 +9,7 @@ from src.films.film_repo import film_repo
 # Test SQLAlchemy DBURL
 
 test_URL = f"{POSTGRES_URI}_test"
+print(test_URL)
 test_engine = create_engine(test_URL)
 TestFactory = sessionmaker(bind=test_engine, autoflush=False, autocommit=False)
 
