@@ -22,7 +22,7 @@ async def root(db: Session = Depends(get_db)):
             repo.bulk_create(film_data)
 
     return {
-        "message": "Codematic Movie-API take home -testing deployment",
+        "message": "Codematic Movie-API take home",
         "docs": "/docs",
         "redoc": "/redocs",
     }
